@@ -3,6 +3,8 @@ A Python client side utility for using Threat Extraction API calls to an applian
 
 It includes Upload API calls, using the User-Check API format ( …/UserCheck/TPAPI).
 
+There's an option of using SSL certificate.
+
 ### The flow
 Going through the input directory and handling each file in order to get its Threat Extraction results.
 
@@ -21,7 +23,7 @@ For each file:
 python tex_api.py --help
 
 usage: tex_api.py [-h] [-id INPUT_DIRECTORY] [-od OUTPUT_DIRECTORY]
-                  [-ip APPLIANCE_IP] [-ak API_KEY]
+                  [-ak API_KEY] [-ip APPLIANCE_IP] [-fq FQDN] [-ct CERT_FILE]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -29,10 +31,17 @@ optional arguments:
                         the input files folder to be scanned by TEX
   -od OUTPUT_DIRECTORY, --output_directory OUTPUT_DIRECTORY
                         the output folder with TEX results
-  -ip APPLIANCE_IP, --appliance_ip APPLIANCE_IP
-                        the appliance ip address
   -ak API_KEY, --api_key API_KEY
                         the appliance api key
+  -ip APPLIANCE_IP, --appliance_ip APPLIANCE_IP
+                        the appliance ip address. If used, then cannot use
+                        fqdn
+  -fq FQDN, --fqdn FQDN
+                        the appliance FQDN. If used, then cannot use
+                        ip_address
+  -ct CERT_FILE, --cert_file CERT_FILE
+                        valid SSL certificate file (full path), which matches
+                        the appliance FQDN. If used, then must also use fqdn
 ~~~~
 It is also possible to change the optional arguments default values within tex_api.py
 
