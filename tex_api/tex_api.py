@@ -13,14 +13,15 @@ import argparse
 
 input_directory = "/home/admin/TEX_API/input_files"
 output_directory = "/home/admin/TEX_API/tex_response_data"
-appliance_ip = "NNN.NNN.NNN.NNN"
 api_key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+appliance_ip = "NNN.NNN.NNN.NNN"
 
 
 def main():
     """
     1. Get the optional arguments (if any): the input-directory, the output-root-directory,
-        appliance-ip and the api-key.
+        the api-key, either the appliance-ip or the appliance-FQDN and the SSL-certificate.
+        Note: if using an SSL-certificate then must also use the FQDN.
     2. Accordingly set the api-url, and create the output directory.
     3. Go though all input files in the input directory.
         Handling each input file is described in TEX class in tex_file_handler.py:
@@ -32,8 +33,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("-id", "--input_directory", help="the input files folder to be scanned by TEX")
     parser.add_argument("-od", "--output_directory", help="the output folder with TEX results")
-    parser.add_argument("-ip", "--appliance_ip", help="the appliance ip address")
     parser.add_argument("-ak", "--api_key", help="the appliance api key")
+    parser.add_argument("-ip", "--appliance_ip", help="the appliance ip address.  If used, then cannot use fqdn")
+    parser.add_argument("-fq", "--fqdn", help="the appliance FQDN.  If used, then cannot use ip_address")
+    parser.add_argument("-ct", "--cert_file",
+                        help="valid SSL certificate file (full path), which matches the appliance FQDN." +
+                             "  If used, then must also use fqdn")
     args = parser.parse_args()
     if args.input_directory:
         input_directory = args.input_directory
@@ -51,13 +56,26 @@ def main():
         except Exception as E1:
             print("could not create tex_api output directory, because: {}".format(E1))
             return
-    if args.appliance_ip:
-        appliance_ip = args.appliance_ip
-    print("The appliance ip address : {}".format(appliance_ip))
     if args.api_key:
         api_key = args.api_key
     print("The appliance api key : {}".format(api_key))
-    url = "https://" + appliance_ip + "/UserCheck/TPAPI"
+    if args.appliance_ip:
+        appliance_ip = args.appliance_ip
+    if args.fqdn:
+        if args.appliance_ip:
+            print("Cannot use both arguments: appliance_ip and fqdn. Use just one of them. If using cert_file" +
+                  "argument then must also use fqdn argument.")
+            return
+        print("The appliance FQDN : {}".format(args.fqdn))
+        url = "https://" + args.fqdn + "/UserCheck/TPAPI"
+    else:
+        print("The appliance ip address : {}".format(appliance_ip))
+        url = "https://" + appliance_ip + "/UserCheck/TPAPI"
+    if args.cert_file:
+        if not args.fqdn:
+            print("Using cert_file argument requires using also fqdn argument.")
+            return
+        print("The valid certificate file, that should match the appliance FQDN : {}".format(args.cert_file))
 
     # A loop over the files in the input folder
     print("Begin handling input files by TEX")
@@ -65,7 +83,7 @@ def main():
         try:
             full_path = os.path.join(input_directory, file_name)
             print("Handling file: {} by TEX".format(file_name))
-            tex = TEX(url, api_key, file_name, full_path, output_directory)
+            tex = TEX(url, api_key, file_name, full_path, output_directory, args.cert_file)
             tex.handle_file()
         except Exception as E:
             print("could not handle file: {} because: {}. Continue to handle next file".format(file_name, E))
