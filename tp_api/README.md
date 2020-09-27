@@ -1,7 +1,9 @@
 # tp_api
 A Python client side utility for using ALL kinds of Threat Prevention API calls to an appliance :
 Threat Emulation, Threat Extraction and Anti Virus.
+
 The utility includes Upload, Query and Download API calls, using the User-Check API format ( …/UserCheck/TPAPI).
+
 There's an option of using SSL certificate.
 
 ### The flow
