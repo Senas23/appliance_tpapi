@@ -11,8 +11,8 @@ import os
 import argparse
 
 
-input_directory = "/home/admin/TE_API/input_files"
-output_directory = "/home/admin/TE_API/te_response_data"
+input_directory = "input_files"        # default init. assuming this folder exists within appliance_tpapi/te_api/ folder
+output_directory = "te_response_data"  # default init. assuming this folder exists within appliance_tpapi/te_api/ folder
 appliance_ip = "NNN.NNN.NNN.NNN"
 
 
