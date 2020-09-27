@@ -37,7 +37,7 @@ def main():
     parser.add_argument("-ip", "--appliance_ip", help="the appliance ip address.  If used, then cannot use fqdn")
     parser.add_argument("-fq", "--fqdn", help="the appliance FQDN.  If used, then cannot use ip_address")
     parser.add_argument("-ct", "--cert_file",
-                        help="valid SSL certificate file (full path), which matches the appliance FQDN." +
+                        help="valid certificate file (full path), which matches the appliance FQDN." +
                              "  If used, then must also use fqdn")
     args = parser.parse_args()
     if args.input_directory:
