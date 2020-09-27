@@ -2,6 +2,7 @@
 A Python client side utility for using ALL kinds of Threat Prevention API calls to an appliance :
 Threat Emulation, Threat Extraction and Anti Virus.
 The utility includes Upload, Query and Download API calls, using the User-Check API format ( …/UserCheck/TPAPI).
+There's an option of using SSL certificate.
 
 ### The flow
 First, creating an output directory (that is a sub-directory of the output root directory) whose
@@ -46,7 +47,7 @@ For each file:
 python tp_api.py --help
 
 usage: tp_api.py [-h] [-id INPUT_DIRECTORY] [-od OUTPUT_ROOT_DIRECTORY]
-                 [-ip APPLIANCE_IP] [-ak API_KEY]
+                 [-ak API_KEY] [-ip APPLIANCE_IP] [-fq FQDN] [-ct CERT_FILE]
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -54,10 +55,16 @@ optional arguments:
                         the input files folder to be scanned by AV
   -od OUTPUT_ROOT_DIRECTORY, --output-root-directory OUTPUT_ROOT_DIRECTORY
                         the output root folder of the results
-  -ip APPLIANCE_IP, --appliance_ip APPLIANCE_IP
-                        the appliance ip address
   -ak API_KEY, --api_key API_KEY
                         the appliance api key
+  -ip APPLIANCE_IP, --appliance_ip APPLIANCE_IP
+                        the appliance ip address
+  -fq FQDN, --fqdn FQDN
+                        the appliance FQDN. If used, then cannot use
+                        ip_address
+  -ct CERT_FILE, --cert_file CERT_FILE
+                        valid certificate file (full path), which matches the
+                        appliance FQDN. If used, then must also use fqdn
 ~~~~
 It is also possible to change the optional arguments default values within tp_api.py
 
