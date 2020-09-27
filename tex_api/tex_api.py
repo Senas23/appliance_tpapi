@@ -20,7 +20,7 @@ appliance_ip = "NNN.NNN.NNN.NNN"
 def main():
     """
     1. Get the optional arguments (if any): the input-directory, the output-root-directory,
-        the api-key, either the appliance-ip or the appliance-FQDN and the SSL-certificate.
+        the api-key, either the appliance-ip or the appliance-FQDN and the certificate file.
         Note: if using an SSL-certificate then must also use the FQDN.
     2. Accordingly set the api-url, and create the output directory.
     3. Go though all input files in the input directory.
