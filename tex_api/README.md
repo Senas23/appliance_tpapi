@@ -40,7 +40,7 @@ optional arguments:
                         the appliance FQDN. If used, then cannot use
                         ip_address
   -ct CERT_FILE, --cert_file CERT_FILE
-                        valid SSL certificate file (full path), which matches
+                        valid certificate file (full path), which matches
                         the appliance FQDN. If used, then must also use fqdn
 ~~~~
 It is also possible to change the optional arguments default values within tex_api.py
