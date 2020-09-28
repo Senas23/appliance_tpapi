@@ -33,9 +33,7 @@ For each file:
 
                   2.3.2 Querying te, av and te_eb until receiving te results.
 
-                     If in between receiving te_eb found results of the early malicious verdict, then reporting online the
-
-                         early malicious verdict result.
+                     If in between receiving te_eb found results of the early malicious verdict, then reporting it online.
 
                      If in between receiving av results, then writing the av results to av_response_info/ sub-directory.
 
