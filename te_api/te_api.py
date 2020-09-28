@@ -11,14 +11,18 @@ import os
 import argparse
 
 
-input_directory = "input_files"        # default init. assuming this folder exists within appliance_tpapi/te_api/ folder
-output_directory = "te_response_data"  # default init. assuming this folder exists within appliance_tpapi/te_api/ folder
-appliance_ip = "NNN.NNN.NNN.NNN"
+# Following variables can be assigned and used instead of adding them as arguments when running the te_api.py .
+#  input_directory and output_directory have the following default settings.
+#  Using the following input directory default setting means assuming that the input files to handle are in
+#   already existing folder :  ..appliance_tpapi/te_api/input_files folder
+input_directory = "input_files"        # default setting - assuming this folder exists in appliance_tpapi/te_api/ folder
+output_directory = "te_response_data"  # default setting - assuming this folder exists in appliance_tpapi/te_api/ folder
+appliance_ip = ""
 
 
 def main():
     """
-    1. Get the optional arguments (if any): the input-directory, the output-root-directory and appliance-ip.
+    1. Get the optional arguments (if any): the input-directory, the output-directory and appliance-ip.
     2. Accordingly set the api-url, and create the output directory.
     3. Go though all input files in the input directory.
         Handling each input file is described in TE class in te_file_handler.py:
@@ -57,7 +61,7 @@ def main():
     for file_name in os.listdir(input_directory):
         try:
             full_path = os.path.join(input_directory, file_name)
-            print("Sending file: {} to TE".format(file_name))
+            print("Handling file: {} by TE".format(file_name))
             te = TE(url, file_name, full_path, output_directory)
             te.handle_file()
         except Exception as E:
