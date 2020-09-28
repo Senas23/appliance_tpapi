@@ -14,7 +14,7 @@ import argparse
 # Following variables can be assigned and used instead of adding them as arguments when running the av_api.py .
 #  input_directory and output_directory have the following default settings.
 #  Using the following input_directory default setting means - assuming that the input files to handle are in
-#   already existing folder :  ..appliance_tpapi/av_api/input_files folder
+#   already existing folder :  ..appliance_tpapi/av_api/input_files
 #  Using the following output_directory default setting means - creating/using the output directory :
 #   ..appliance_tpapi/av_api/av_response_data
 input_directory = "input_files"
