@@ -55,6 +55,9 @@ def main():
             return
     if args.appliance_ip:
         appliance_ip = args.appliance_ip
+    if not appliance_ip:
+        print("Missing appliance_ip")
+        return
     print("The appliance ip address : {}".format(appliance_ip))
     url = "https://" + appliance_ip + ":18194/tecloud/api/v1/file/"
 
