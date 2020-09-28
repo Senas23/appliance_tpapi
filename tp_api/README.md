@@ -17,31 +17,31 @@ Then, going through the input directory and handling each file in order to get i
 
 For each file:
 
-> 1. Querying TE cache and AV cache by the file md5.
+      1. Querying TE cache and AV cache by the file md5.
 
-> 2. If not found in TE cache, then :
+      2. If not found in TE cache, then :
         
->>> 2.1 If found in AV cache, then writing the av results to av_response_info/ sub-directory.
+           2.1 If found in AV cache, then writing the av results to av_response_info/ sub-directory.
 
->>> 2.2 Uploading the file to the appliance for handling by all features:  te, te_eb, scrub (tex) and av
+           2.2 Uploading the file to the appliance for handling by all features:  te, te_eb, scrub (tex) and av
 
->>> 2.3 If te result is upload_success :
+           2.3 If te result is upload_success :
 
->>>>> 2.3.1 Writing scrub (tex) upload results to tex_response_info/ sub-directory.
+                  2.3.1 Writing scrub (tex) upload results to tex_response_info/ sub-directory.
 
->>>>>> If tex managed to clean the file, then also writing that cleaned file to tex_clean_files/ sub-directory.
+                     If tex managed to clean the file, then also writing that cleaned file to tex_clean_files/ sub-directory.
 
->>>>> 2.3.2 Querying te, av and te_eb until receiving te results.
+                  2.3.2 Querying te, av and te_eb until receiving te results.
 
->>>>>> If in between receiving te_eb found results of the early malicious verdict, then reporting online the
+                     If in between receiving te_eb found results of the early malicious verdict, then reporting online the
 
->>>>>>> early malicious verdict result.
+                         early malicious verdict result.
 
->>>>>> If in between receiving av results, then writing the av results to av_response_info/ sub-directory.
+                     If in between receiving av results, then writing the av results to av_response_info/ sub-directory.
 
-> 3. Writing the te results to te_response_info/ sub-directory.
+      3. Writing the te results to te_response_info/ sub-directory.
 
->>> If result verdict is malicious then also downloading the TE report and write it to te_reports/ sub-directory.
+          If result verdict is malicious then also downloading the TE report and write it to te_reports/ sub-directory.
 
     
 ### Usage
