@@ -11,9 +11,13 @@ import os
 import argparse
 
 
-input_directory = "/home/admin/AV_API/input_files"
-output_directory = "/home/admin/AV_API/av_response_data"
-appliance_ip = "NNN.NNN.NNN.NNN"
+# Following variables can be assigned and used instead of adding them as arguments when running the av_api.py .
+#  input_directory and output_directory have the following default settings.
+#  Using the following input directory default setting means assuming that the input files to handle are in
+#   already existing folder :  ..appliance_tpapi/av_api/input_files folder
+input_directory = "input_files"
+output_directory = "av_response_data"
+appliance_ip = ""
 
 
 def main():
@@ -57,7 +61,7 @@ def main():
     for file_name in os.listdir(input_directory):
         try:
             full_path = os.path.join(input_directory, file_name)
-            print("Sending file: {} to AV".format(file_name))
+            print("Handling file: {} by AV".format(file_name))
             av = AV(url, file_name, full_path, output_directory)
             av.handle_file()
         except Exception as E:
