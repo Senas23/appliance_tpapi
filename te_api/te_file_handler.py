@@ -22,8 +22,7 @@ class TE(object):
        2.1 Upload the file to the appliance for handling by te and te_eb features.
        2.2 If upload result is upload_success (meaning no TE results yet) then :
              Query te and te_eb features until receiving TE results.
-               If in between receiving te_eb found results of the early malicious verdict, then report online the
-                early malicious verdict result.
+               If in between receiving te_eb found results of the early malicious verdict, then display the verdict.
      3. Write the TE results (last query/upload response info) into the output folder.
           If resulted TE verdict is malicious then also download the TE report and write it into the output folder.
     """
