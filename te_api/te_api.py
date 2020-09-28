@@ -14,7 +14,7 @@ import argparse
 # Following variables can be assigned and used instead of adding them as arguments when running the te_api.py .
 #  input_directory and output_directory have the following default settings.
 #  Using the following input directory default setting means - assuming that the input files to handle are in
-#   already existing folder :  ..appliance_tpapi/te_api/input_files folder
+#   already existing folder :  ..appliance_tpapi/te_api/input_files
 input_directory = "input_files"        # default setting - assuming this folder exists in appliance_tpapi/te_api/ folder
 output_directory = "te_response_data"  # default setting - assuming this folder exists in appliance_tpapi/te_api/ folder
 appliance_ip = ""
