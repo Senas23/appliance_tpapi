@@ -44,8 +44,7 @@ class TpFileHandling(object):
           2.3.1 Write scrub (tex) upload results to tex_response_info/ sub-directory.
                  If tex managed to clean the file, then also write that cleaned file to tex_clean_files/ sub-directory.
           2.3.2 Query te, av and te_eb until receiving te results.
-                 If in between receiving te_eb found results of the early malicious verdict, then report online the
-                  early malicious verdict result.
+                 If in between receiving te_eb found results of the early malicious verdict, then display the verdict.
                  If in between receiving av results, then write the av results to av_response_info/ sub-directory.
       3. Write the te results to te_response_info/ sub-directory.
            If result verdict is malicious then also download the TE report and write it to te_reports/ sub-directory.
